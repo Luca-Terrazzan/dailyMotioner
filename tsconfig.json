@@ -2,6 +2,7 @@
     "include": [
         "src/*"
     ],
+    "compileOnSave": true,
     "compilerOptions": {
         "target": "es6",
         "sourceMap": true,
