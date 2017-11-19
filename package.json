@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Luca-Terrazzan/dailyMotioner#readme",
   "dependencies": {
+    "@types/node": "^8.0.53",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.3",
     "tslint": "^5.8.0",
