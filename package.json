@@ -1,0 +1,24 @@
+{
+  "name": "daily-motioner",
+  "version": "1.0.0",
+  "description": "Daily Motion automation tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luca-Terrazzan/dailyMotioner.git"
+  },
+  "keywords": [
+    "dialy-motion",
+    "automation",
+    "nodejs"
+  ],
+  "author": "Luca Terrazzan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luca-Terrazzan/dailyMotioner/issues"
+  },
+  "homepage": "https://github.com/Luca-Terrazzan/dailyMotioner#readme"
+}
