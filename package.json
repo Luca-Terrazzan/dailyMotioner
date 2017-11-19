@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Luca-Terrazzan/dailyMotioner.git"
   },
   "keywords": [
-    "dialy-motion",
+    "daily-motion",
     "automation",
     "nodejs"
   ],
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Luca-Terrazzan/dailyMotioner/issues"
   },
-  "homepage": "https://github.com/Luca-Terrazzan/dailyMotioner#readme"
+  "homepage": "https://github.com/Luca-Terrazzan/dailyMotioner#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
 }
