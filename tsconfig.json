@@ -2,9 +2,10 @@
     "include": [
         "src/*"
     ],
-    "compileOnSave": true,
     "compilerOptions": {
-        "target": "es2017",
-        "sourceMap": true
+        "target": "es5",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "lib": [ "es2015" ]
     }
 }
