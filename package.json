@@ -24,8 +24,8 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.3",
-    "request": "^2.83.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.1",
+    "web-request": "^1.0.7"
   }
 }
