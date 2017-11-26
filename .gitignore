@@ -1,6 +1,9 @@
 # Compiled
 dist
 
+# Binaries
+videos
+
 # Logs
 logs
 *.log
