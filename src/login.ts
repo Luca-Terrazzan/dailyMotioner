@@ -1,8 +1,12 @@
 import * as WebRequest from 'web-request';
+import Video from './models/video.model';
 
-const token = 'YmQIAgIVAUsHAh9TB1FUEkpdEx9BW18PDls';
+const token = 'cHdZXQEQUE5GV1hLX1ZHQAkJCk4ORAcJWwE';
 
 (async () => {
+    const video = new Video('test', token);
+    video.upload('nopath');
+
     const url = 'https://api.dailymotion.com/file/upload';
     const header: object = {
         Authorization: 'Bearer ' + token
