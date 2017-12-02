@@ -32,11 +32,12 @@ export default class Logger {
 
     public static info(message: string) {
         Logger.logger.info(message);
+        console.log(message);
     }
     public static debug(message: string) {
-        Logger.logger.debug(message);
+        console.log(message);
     }
     public static error(message: string) {
-        Logger.logger.error(message);
+        console.error(message);
     }
 }
