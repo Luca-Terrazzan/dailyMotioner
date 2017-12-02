@@ -1,5 +1,5 @@
 import * as WebRequest from 'web-request';
-import Log from 'log';
+import Logger from '../lib/logger';
 
 export default class Video {
 
@@ -16,6 +16,8 @@ export default class Video {
     }
 
     public upload(filepath: string): string {
+        Logger.info('Uploading video: ' + filepath);
+        
         this.filepath = filepath;
 
         const uploadUrl = this.getUploadUrl();

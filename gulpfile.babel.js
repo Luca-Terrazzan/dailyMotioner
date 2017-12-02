@@ -11,7 +11,7 @@ const tsProject = ts.createProject('./tsconfig.json');
 const path = {
     src: './src',
     dist: './dist',
-    login: './dist' + '/login.js'
+    boostrapPath: './dist' + '/bootstrap.js'
 };
 
 
@@ -30,5 +30,5 @@ gulp.task(
 
 gulp.task('run', ['build'],() => {
     console.log('Executing script...');
-    exec.exec('node ' + path.login + ' > ' + path.dist + '/result.json');
+    exec.exec('node ' + path.boostrapPath);
 });
