@@ -1,4 +1,6 @@
 import * as WebRequest from 'web-request';
+import * as Request from 'request';
+import * as fs from 'fs';
 import Logger from '../lib/logger';
 
 export default class Video {
@@ -10,6 +12,7 @@ export default class Video {
 
     public uploadUrl: string;
     public progressUrl: string;
+    public url: string;
     public id: string;
 
     private baseUrl = 'https://api.dailymotion.com/';
@@ -55,27 +58,43 @@ export default class Video {
         this.progressUrl = response.progress_url;
 
         Logger.debug('Got upload url: ' + this.uploadUrl);
+        Logger.debug('Got progress url: ' + this.progressUrl);
 
         return this.uploadUrl;
     }
 
-    private async uploadVideoToUploadUrl(): Promise<string> {
-        // do the upload...
+    private uploadVideoToUploadUrl() {
         Logger.debug('Uploading video to upload url: ' + this.uploadUrl);
 
-        const response = JSON.parse(
-            (await WebRequest.post(
-                this.uploadUrl,
-                {headers: this.header}
-            )).content
-        );
-
-        Logger.debug('Uploaded file with outcome: ' + JSON.stringify(response));
-
-        return 'loaded url';
+        // Multipart body
+        const formData = {
+            file: fs.createReadStream(this.filepath)
+        };
+        // Header and body params
+        const uploadOptions = {
+            url: this.uploadUrl,
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + this.token
+            },
+            formData
+        };
+        // Create http request
+        // NOTE: Request is used here instead of WebRequest, this is due to WebRequest not handling correctly
+        // multipart data body. However Request.js does *NOT* support await/async and is supposed to run on
+        // vanilla javascript, hence the callback.
+        const req = Request(uploadOptions, (err, resp, body) => {
+            if (err) {
+                console.log('Error ', err);
+            } else {
+                this.url = JSON.parse(body).url;
+                console.log('Upload successful, video url: ', this.url);
+                this.postVideo();
+            }
+        });
     }
 
-    private postVideo(url: string): string {
+    private postVideo(): string {
         // post video to /me/videos
 
         return 'video id';

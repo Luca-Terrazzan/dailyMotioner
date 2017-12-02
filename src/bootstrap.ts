@@ -5,12 +5,12 @@ import Video from './models/video.model';
 const logFolder = './logs/';
 const logTemplate = 'log';
 const logExtension = '.log';
-const token = 'NW4ARAsOB0dVAA4CAkxXA0UPTAkJUl5fBlo';
+const token = 'YTkFURsLC1tZAV0HXVseEVEOFg9ABBBZA1I';
 
 (async () => {
     // Check if log folder is available, otherwise creates it
     if (!fs.existsSync(logFolder)) {
-        fs.mkdirSync(logFolder)
+        fs.mkdirSync(logFolder);
     }
 
     // Create logger instance
