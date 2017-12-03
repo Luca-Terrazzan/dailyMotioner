@@ -117,9 +117,8 @@ export default class Video {
                 Logger.info('Error ' + err);
                 return false;
             } else {
-                this.url = JSON.parse(body).id;
+                this.id = JSON.parse(body).id;
                 Logger.info('Video posted with id: ' + this.id);
-                Logger.info(body);
                 return true;
             }
         });

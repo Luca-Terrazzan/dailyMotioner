@@ -6,8 +6,8 @@ import { WriteStream } from 'fs';
  */
 export default class Logger {
     private static instance: Logger;
-
     private static logger: Log;
+    private static debugEnabled: boolean = false;
 
     /**
      * Private singleton
@@ -30,13 +30,19 @@ export default class Logger {
         return Logger.instance;
     }
 
+    public static toggleDebugLogging(enable?: boolean) {
+        Logger.debugEnabled = enable ? enable : !Logger.debugEnabled;
+    }
+
     public static info(...message: any[]) {
         Logger.logger.info(message);
         console.log(...message);
     }
     public static debug(...message: any[]) {
-        Logger.logger.info(message);
-        console.log(...message);
+        if (Logger.debugEnabled) {
+            Logger.logger.info(message);
+            console.log(...message);
+        }
     }
     public static error(...message: any[]) {
         Logger.logger.info(message);
