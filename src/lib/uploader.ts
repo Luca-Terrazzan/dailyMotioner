@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import getVideoTitle from './utils';
 
 export default class Uploader {
-    private batchSize: number = 1;
+    private batchSize = 1;
     private videosFolder: string;
     private token: string;
 
@@ -33,7 +33,7 @@ export default class Uploader {
                 continue;
             }
             this.videos.push({
-                title: title,
+                title,
                 path: this.videosFolder + file
             });
         }
