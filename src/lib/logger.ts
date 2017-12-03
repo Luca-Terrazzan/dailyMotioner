@@ -30,14 +30,16 @@ export default class Logger {
         return Logger.instance;
     }
 
-    public static info(message: string) {
+    public static info(...message: any[]) {
         Logger.logger.info(message);
-        console.log(message);
+        console.log(...message);
     }
-    public static debug(message: string) {
-        console.log(message);
+    public static debug(...message: any[]) {
+        Logger.logger.info(message);
+        console.log(...message);
     }
-    public static error(message: string) {
-        console.error(message);
+    public static error(...message: any[]) {
+        Logger.logger.info(message);
+        console.log(...message);
     }
 }
