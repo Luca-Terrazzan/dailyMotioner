@@ -112,13 +112,19 @@ export default class Video {
             formData
         };
         // Create http request
-        const req = Request(uploadOptions, (err, resp, body) => {
+        const req = Request(uploadOptions, (err, resp, rawBody) => {
             if (err) {
                 Logger.info('Error ' + err);
                 return false;
             } else {
-                this.id = JSON.parse(body).id;
+                const body = JSON.parse(rawBody);
+                if (!body.id) {
+                    Logger.error('Cannot post video, might be lacking manage_videos scope?', body);
+                    return false;
+                }
+                this.id = body.id;
                 Logger.info('Video posted with id: ' + this.id);
+
                 return true;
             }
         });
