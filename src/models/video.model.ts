@@ -83,7 +83,7 @@ export default class Video {
         // Create http request
         // NOTE: Request is used here instead of WebRequest, this is due to WebRequest not handling correctly
         // multipart data body. However Request.js does *NOT* support await/async and is supposed to run on
-        // vanilla javascript, hence the callback.
+        // vanilla javascript, hence the callback. Might be prmosified later™
         const req = Request(uploadOptions, (err, resp, body) => {
             if (err) {
                 Logger.info('Error ' + err);
