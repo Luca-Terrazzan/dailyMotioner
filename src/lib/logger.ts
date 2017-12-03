@@ -15,7 +15,7 @@ export default class Logger {
      * @return {Logger}    singleton
      */
     private constructor(writeStream: WriteStream) {
-        Logger.logger = new Log('info', writeStream);
+        Logger.logger = new Log('debug', writeStream);
     }
 
     /**
@@ -40,12 +40,12 @@ export default class Logger {
     }
     public static debug(...message: any[]) {
         if (Logger.debugEnabled) {
-            Logger.logger.info(message);
+            Logger.logger.debug(message);
             console.log(...message);
         }
     }
     public static error(...message: any[]) {
-        Logger.logger.info(message);
+        Logger.logger.error(message);
         console.log(...message);
     }
 }
