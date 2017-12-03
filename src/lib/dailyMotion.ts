@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import Logger from '../lib/logger';
 import { stringify } from 'querystring';
+import Uploader from './uploader';
 
 export default class DailyMotion {
     private username: string;
@@ -27,7 +28,8 @@ export default class DailyMotion {
             client_id: this.apiKey,
             client_secret: this.apiSecret,
             username: this.username,
-            password: this.password
+            password: this.password,
+            scope: 'manage_videos manage_playlists'
         };
         const response = await Axios.post(
             this.baseUrl + this.loginEndpoint,
@@ -44,5 +46,13 @@ export default class DailyMotion {
             Logger.error('Login failed with response: ', response.data);
             return false;
         }
+    }
+
+    public async uploadVideos(pathToVideosFolder: string, batchSize?: number): Promise<boolean> {
+        const uploader = new Uploader(batchSize ? batchSize : 1, pathToVideosFolder, this.accessToken);
+        await uploader.init();
+        await uploader.startVideoUpload();
+
+        return true;
     }
 }

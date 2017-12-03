@@ -19,11 +19,6 @@ const token = 'eGdcRF1MBRVZAxxSQFZHFwIHBVUOTkpAHF4';
     Logger.info('Application bootstrapped!');
     Logger.toggleDebugLogging(true);
 
-    // Start upload
-    // const uploader = new Uploader(3, './videos/', token);
-    // await uploader.init();
-    // await uploader.startVideoUpload();
-
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
         'luca.terraz@gmail.com',
@@ -32,4 +27,5 @@ const token = 'eGdcRF1MBRVZAxxSQFZHFwIHBVUOTkpAHF4';
         '4b48fa27f4946b726a16b6efb6b245e1a7c9b4b6'
     );
     await dailyMotion.login();
+    await dailyMotion.uploadVideos('./videos/');
 })();
