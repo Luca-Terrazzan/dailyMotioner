@@ -15,7 +15,10 @@ const token = 'eGdcRF1MBRVZAxxSQFZHFwIHBVUOTkpAHF4';
     }
 
     // Create logger instance
-    const logger = Logger.getInstance(fs.createWriteStream(logFolder + logTemplate + logExtension));
+    const logger = Logger.getInstance(fs.createWriteStream(
+        logFolder + logTemplate + logExtension,
+        { flags: 'a' } // Append
+    ));
     Logger.info('Application bootstrapped!');
     Logger.toggleDebugLogging(true);
 
