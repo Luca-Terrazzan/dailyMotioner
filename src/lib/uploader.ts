@@ -37,12 +37,11 @@ export default class Uploader {
                 path: this.videosFolder + file
             });
         }
-        Logger.debug('current video: ', this.videos);
     }
 
     public async startVideoUpload() {
         // Create video insance and start upload
-        Logger.debug('Starting uploading the following: ', this.videos);
+        Logger.debug('Starting uploading the following videos: ', this.videos);
         for (const video of this.videos) {
             (new Video(video.title, this.token, video.path)).upload();
         }
