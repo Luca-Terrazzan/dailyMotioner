@@ -7,7 +7,7 @@ import { WriteStream } from 'fs';
 export default class Logger {
     private static instance: Logger;
     private static logger: Log;
-    private static debugEnabled: boolean = false;
+    private static debugEnabled = false;
 
     /**
      * Private singleton
