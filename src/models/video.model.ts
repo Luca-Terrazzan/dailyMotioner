@@ -17,6 +17,7 @@ export default class Video {
 
     private baseUrl = 'https://api.dailymotion.com/';
     private uploadUrlEndpoint = 'file/upload/';
+    private postVideoUrlEndpoint = 'me/videos/';
     private header: {Authorization: string};
 
     /**
@@ -85,18 +86,43 @@ export default class Video {
         // vanilla javascript, hence the callback.
         const req = Request(uploadOptions, (err, resp, body) => {
             if (err) {
-                console.log('Error ', err);
+                Logger.info('Error ' + err);
             } else {
                 this.url = JSON.parse(body).url;
-                console.log('Upload successful, video url: ', this.url);
+                Logger.info('Upload successful, video url: ' + this.url);
                 this.postVideo();
             }
         });
     }
 
-    private postVideo(): string {
+    private postVideo(): boolean {
         // post video to /me/videos
-
-        return 'video id';
+        // Multipart body
+        const formData = {
+            title: this.title,
+            url: this.url
+        };
+        // Header and body params
+        const uploadOptions = {
+            url: this.baseUrl + this.postVideoUrlEndpoint,
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + this.token
+            },
+            formData
+        };
+        // Create http request
+        const req = Request(uploadOptions, (err, resp, body) => {
+            if (err) {
+                Logger.info('Error ' + err);
+                return false;
+            } else {
+                this.url = JSON.parse(body).id;
+                Logger.info('Video posted with id: ' + this.id);
+                Logger.info(body);
+                return true;
+            }
+        });
+        return false;
     }
 }

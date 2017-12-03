@@ -5,7 +5,7 @@ import Video from './models/video.model';
 const logFolder = './logs/';
 const logTemplate = 'log';
 const logExtension = '.log';
-const token = 'YTkFURsLC1tZAV0HXVseEVEOFg9ABBBZA1I';
+const token = 'eHUDVltMHVdBRwAJX15KGAQAQF8BUR1EUUE';
 
 (async () => {
     // Check if log folder is available, otherwise creates it
@@ -18,6 +18,6 @@ const token = 'YTkFURsLC1tZAV0HXVseEVEOFg9ABBBZA1I';
     Logger.info('Application bootstrapped!');
 
     // Start the upload of test video
-    const video = new Video('Test video 1', token, '../videos/test.mp4');
+    const video = new Video('Check this out', token, '../videos/test.mp4');
     video.upload();
 })();
