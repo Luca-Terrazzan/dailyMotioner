@@ -4,6 +4,9 @@ dist
 # Binaries
 videos
 
+# Config
+config.json
+
 # Logs
 logs
 *.log
