@@ -24,8 +24,6 @@ const logExtension = '.log';
 
     const config = Config.getInstance('./config.json').getConfig();
 
-    Logger.debug(config);
-
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
         config.username,
