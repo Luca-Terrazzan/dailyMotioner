@@ -2,11 +2,11 @@ import * as fs from 'fs';
 import Logger from './lib/logger';
 import Uploader from './lib/uploader';
 import DailyMotion from './lib/dailymotion';
+import Config from './models/config.model';
 
 const logFolder = './logs/';
 const logTemplate = 'log';
 const logExtension = '.log';
-const token = 'eGdcRF1MBRVZAxxSQFZHFwIHBVUOTkpAHF4';
 
 (async () => {
     // Check if log folder is available, otherwise creates it
@@ -22,12 +22,14 @@ const token = 'eGdcRF1MBRVZAxxSQFZHFwIHBVUOTkpAHF4';
     Logger.info('Application bootstrapped!');
     Logger.toggleDebugLogging(true);
 
+    const config = Config.getInstance('./config.json').getConfig();
+
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
-        'luca.terraz@gmail.com',
-        'QWE123qw!',
-        '6db8c2ed9a6ef7630b47',
-        '4b48fa27f4946b726a16b6efb6b245e1a7c9b4b6'
+        config.username,
+        config.password,
+        config.apiKey,
+        config.apiSecret
     );
     await dailyMotion.login();
     await dailyMotion.uploadVideos('./videos/');
