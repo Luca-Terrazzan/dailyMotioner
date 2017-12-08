@@ -24,6 +24,8 @@ const logExtension = '.log';
 
     const config = Config.getInstance('./config.json').getConfig();
 
+    Logger.debug(config);
+
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
         config.username,
@@ -32,5 +34,5 @@ const logExtension = '.log';
         config.apiSecret
     );
     await dailyMotion.login();
-    await dailyMotion.uploadVideos('./videos/');
+    await dailyMotion.uploadVideos(config.videosFolder);
 })();
