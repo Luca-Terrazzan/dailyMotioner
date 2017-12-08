@@ -29,6 +29,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.3",
+    "jasmine": "^2.8.0",
     "log": "^1.4.0",
     "request": "^2.83.0",
     "tslint": "^5.8.0",
