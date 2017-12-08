@@ -86,10 +86,10 @@ export default class Video {
         // vanilla javascript, hence the callback. Might be prmosified later™
         const req = Request(uploadOptions, (err, resp, body) => {
             if (err) {
-                Logger.info('Error ' + err);
+                Logger.error('Error ' + err);
             } else {
                 this.url = JSON.parse(body).url;
-                Logger.info('Upload successful, video url: ' + this.url);
+                Logger.debug('Upload successful, video url: ' + this.url);
                 this.postVideo();
             }
         });
