@@ -34,7 +34,7 @@ export default class Uploader {
             }
             this.videos.push({
                 title,
-                path: this.videosFolder + file
+                path: `${this.videosFolder}/${file}`
             });
         }
     }
