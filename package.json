@@ -4,7 +4,7 @@
   "description": "Daily Motion automation tools",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.3",
+    "jshint": "^2.9.5",
     "log": "^1.4.0",
     "mocha": "^4.0.1",
     "request": "^2.83.0",
