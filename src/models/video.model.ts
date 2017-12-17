@@ -103,7 +103,7 @@ export default class Video {
             title: this.title,
             channel: 'Comedy & Entertainment',
             description: `Iscrivetevi al canale GabeZazza se il video vi è piaciuto, grazie!
-                Join the channel GabeZazza if you liked the video, thanks!`,
+            Join the channel GabeZazza if you liked the video, thanks!`,
             tags: 'CAMERA CAFè,COMEDY,ENTERTAINMENT,HUMOUR,SITCOM',
             url: this.url
         };
