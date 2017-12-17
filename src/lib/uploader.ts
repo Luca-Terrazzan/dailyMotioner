@@ -57,6 +57,7 @@ export default class Uploader {
 
     /**
      * Starts the actual upload based from instance data
+     * @TODO: move uploaded files to a separate directory
      */
     public async startVideoUpload() {
         // Create video instance and start upload
