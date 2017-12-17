@@ -45,7 +45,7 @@ export default class Uploader {
             try {
                 title = getVideoTitle(file);
             } catch (typeError) {
-                Logger.error(typeError);
+                Logger.error(`Error while trying to read ${file} metadata: ${typeError.message}`);
                 continue;
             }
             this.videos.push({
