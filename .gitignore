@@ -3,6 +3,7 @@ dist
 
 # Binaries
 videos
+videos_backup
 
 # Config
 config.json
