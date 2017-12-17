@@ -20,10 +20,13 @@ describe('Logger', () => {
     });
 });
 
+// These are real API calls, timeout deafult (2sec) shoudl be increased to at least 10sec
+// e.g. mocha --timeout 15000
 describe('Daily Motioner', () => {
     var dm = require('../dist/lib/dailyMotion').default;
 
-    it('Should be able to login', (done) => {
+    it('Should not be able to login without proper credentials', (done) => {
+        // Get dm isntance without passing credentials
         var dailyMotion = new dm();
         dailyMotion.login().should.eventually.be.equal(false).notify(done);
     });
