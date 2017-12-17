@@ -99,9 +99,9 @@ export default class Video {
         // post video to /me/videos
         // Multipart body
         // TODO: move metadata details to external JSON
-        const videoData = {
+        const formData = {
             title: this.title,
-            channel: 'Comedy & Entrtainment',
+            channel: 'Comedy & Entertainment',
             description: `Iscrivetevi al canale GabeZazza se il video vi è piaciuto, grazie!
                 Join the channel GabeZazza if you liked the video, thanks!`,
             tags: 'CAMERA CAFè,COMEDY,ENTERTAINMENT,HUMOUR,SITCOM',
@@ -114,7 +114,7 @@ export default class Video {
             headers: {
                 Authorization: 'Bearer ' + this.token
             },
-            videoData
+            formData
         };
         // Create http request
         const req = Request(uploadOptions, (err, resp, rawBody) => {
@@ -128,6 +128,8 @@ export default class Video {
                     return false;
                 }
                 this.id = body.id;
+
+                Logger.debug('Video posted with: ' + body);
                 Logger.info('Video posted with id: ' + this.id);
 
                 return true;
