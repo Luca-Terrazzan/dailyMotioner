@@ -1,12 +1,22 @@
 # Compiled
 dist
 
+# Binaries
+videos
+videos_backup
+
+# Config
+config.json
+
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# VSCODE
+.vscode
 
 # Runtime data
 pids
@@ -59,4 +69,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
