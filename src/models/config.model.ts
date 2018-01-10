@@ -4,44 +4,60 @@ import * as fs from 'fs';
 export default class Config {
     private static instance: Config;
 
-    private configJsonPath: string;
-    private config: {
+    private userConfig: {
         username: string,
         password: string,
-        logfolder: string,
-        videosFolder: string,
         apiKey: string,
         apiSecret: string
     };
+    private folderConfig: {
+        logfolder: string,
+        videosFolder: string,
+    };
+    private videosConfig: {
+        channel: string,
+        description: string,
+        tags: string
+    };
 
     // Singleton
-    private constructor(configJsonPath: string) {
-        if (!configJsonPath) {
-            Logger.error('Please provide a valid path to the config json!');
-            throw new TypeError('Please provide a valid path to the config json!');
-        }
-        this.configJsonPath = configJsonPath;
-        this.loadConfig();
-    }
+    private constructor() {}
 
     // Get singleton instance
-    public static getInstance(configJsonPath: string) {
+    public static getInstance() {
         if (!this.instance) {
-            Config.instance = new Config(configJsonPath);
+            Config.instance = new Config();
         }
         return this.instance;
     }
 
-    private loadConfig() {
-        this.config = JSON.parse(fs.readFileSync(this.configJsonPath, {encoding: 'UTF-8'}));
+    public loadConfig(configJsonPath: string) {
+        if (!configJsonPath) {
+            Logger.error('Please provide a valid path to the config json!');
+            throw new TypeError('Please provide a valid path to the config json!');
+        }
+        try {
+            const config = JSON.parse(fs.readFileSync(configJsonPath, {encoding: 'UTF-8'}));
+            this.userConfig = config.userInfo;
+            this.folderConfig = config.folders;
+            this.videosConfig = config.videosMetadata;
+        } catch (error) {
+            Logger.error('Error while parsing config file!', error);
+            throw new TypeError('Error while parsing config file!');
+        }
         Logger.debug('Config file read succesfully.');
+        return this;
     }
 
-    public getConfigPath() {
-        return this.configJsonPath;
+    public getUserConfig() {
+        return this.userConfig;
     }
 
-    public getConfig() {
-        return this.config;
+    public getFolderConfig() {
+        return this.folderConfig;
+    }
+
+    public getVideosConfig() {
+        return this.videosConfig;
     }
 }
