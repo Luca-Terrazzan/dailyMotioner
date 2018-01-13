@@ -1,6 +1,12 @@
 import Logger from '../lib/logger';
 import * as fs from 'fs';
 
+/**
+ * Utility class containing all app's settings. Singleton to statically serve all settings within the applciation.
+ *
+ * @export
+ * @class Config
+ */
 export default class Config {
     private static instance: Config;
 
@@ -34,6 +40,13 @@ export default class Config {
         return this.instance;
     }
 
+    /**
+     * Loads configuration file
+     *
+     * @param {string} configJsonPath The path to config.json
+     * @returns {Config} Chain pattern
+     * @memberof Config
+     */
     public loadConfig(configJsonPath: string) {
         if (!configJsonPath) {
             Logger.error('Please provide a valid path to the config json!');
