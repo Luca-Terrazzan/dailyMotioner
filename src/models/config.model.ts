@@ -41,10 +41,10 @@ export default class Config {
         }
         try {
             const config = JSON.parse(fs.readFileSync(configJsonPath, {encoding: 'UTF-8'}));
-            this.userConfig   = config.userInfo;
+            this.userConfig = config.userInfo;
             this.folderConfig = config.folders;
             this.videosConfig = config.videosMetadata;
-            this.options      = config.options;
+            this.options = config.options;
         } catch (error) {
             Logger.error('Error while parsing config file!', error);
             throw new TypeError('Error while parsing config file!');
