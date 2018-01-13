@@ -10,8 +10,11 @@
         "videosFolder": ""
     },
     "videosMetadata": {
-        "channel": "",
-        "description": "",
-        "tags": ""
+        "channel": "fun",
+        "description": "some description",
+        "tags": "tag1, tag2"
+    },
+    "options": {
+        "debug": "false"
     }
 }
