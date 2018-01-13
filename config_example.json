@@ -15,6 +15,6 @@
         "tags": "tag1, tag2"
     },
     "options": {
-        "debug": "false"
+        "debug": false
     }
 }

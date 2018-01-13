@@ -15,19 +15,21 @@ const configPath = './config.json';
         fs.mkdirSync(logFolder);
     }
 
+    // Load application configuration
+    const config = Config.getInstance().loadConfig(configPath);
+    
+    const userConfig = config.getUserConfig();
+    const folderConfig = config.getFolderConfig();
+    const options = config.getOptions();
+
     // Create logger instance
     const logger = Logger.getInstance(fs.createWriteStream(
         logFolder + logTemplate + logExtension,
         { flags: 'a' } // Append
     ));
     Logger.info('Application bootstrapped!');
-    Logger.toggleDebugLogging(true);
-
-    // Load application configuration
-    const config = Config.getInstance().loadConfig(configPath);
-
-    const userConfig = config.getUserConfig();
-    const folderConfig = config.getFolderConfig();
+    Logger.info('debug mode', options.debug);
+    Logger.toggleDebugLogging(options.debug);
     
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
