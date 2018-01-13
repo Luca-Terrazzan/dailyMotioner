@@ -30,6 +30,12 @@ export default class Logger {
         return Logger.instance;
     }
 
+    /**
+     * Toggles or set all loggings done through the debug() method.
+     * By default debugging is disabled.
+     *
+     * @param {boolean} enable If true, debugging is enabled. If omitted, it is toggled.
+     */
     public static toggleDebugLogging(enable?: boolean) {
         Logger.debugEnabled = enable ? enable : !Logger.debugEnabled;
     }

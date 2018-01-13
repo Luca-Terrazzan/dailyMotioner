@@ -32,7 +32,7 @@ export default class Video {
      * @method constructor
      * @param  {string}    title Video's title
      * @param  {string}    token Auth token, will be moved
-     * @return {video}          Video instance
+     * @return {Video}
      */
     constructor(title: string, token: string, filepath: string) {
         this.title = title;
