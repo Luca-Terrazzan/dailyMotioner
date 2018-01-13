@@ -7,7 +7,7 @@ import Config from './models/config.model';
 const logFolder = './logs/';
 const logTemplate = 'log';
 const logExtension = '.log';
-const configPath = '../config.json';
+const configPath = './config.json';
 
 (async () => {
     // Check if log folder is available, otherwise creates it
@@ -28,7 +28,7 @@ const configPath = '../config.json';
 
     const userConfig = config.getUserConfig();
     const folderConfig = config.getFolderConfig();
-
+    
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
         userConfig.username,
