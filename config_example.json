@@ -6,15 +6,12 @@
         "apiSecret": ""
     },
     "folders": {
-        // Full paths are better
         "logfolder": "",
         "videosFolder": ""
     },
     "videosMetadata": {
-        // Check DM developer site for available channels
         "channel": "",
         "description": "",
-        // Comma separated list
         "tags": ""
     }
 }

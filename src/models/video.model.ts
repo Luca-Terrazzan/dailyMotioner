@@ -1,7 +1,9 @@
 import * as WebRequest from 'web-request';
 import * as Request from 'request';
 import * as fs from 'fs';
+
 import Logger from '../lib/logger';
+import Config from './config.model';
 
 export default class Video {
 
@@ -18,7 +20,12 @@ export default class Video {
     private baseUrl = 'https://api.dailymotion.com/';
     private uploadUrlEndpoint = 'file/upload/';
     private postVideoUrlEndpoint = 'me/videos/';
-    private header: {Authorization: string};
+    private header: { Authorization: string };
+    private videoMetadata: {
+        'channel': string,
+        'description': string,
+        'tags': string
+    };
 
     /**
      * Creates a video
@@ -34,6 +41,7 @@ export default class Video {
         this.header = {
             Authorization: 'Bearer ' + token
         };
+        this.videoMetadata = Config.getInstance().getVideosConfig();
     }
 
     public async upload(): Promise<string> {
@@ -98,13 +106,11 @@ export default class Video {
     private postVideo(): boolean {
         // post video to /me/videos
         // Multipart body
-        // TODO: move metadata details to external JSON
         const formData = {
             title: this.title,
-            channel: 'Comedy & Entertainment',
-            description: `Iscrivetevi al canale GabeZazza se il video vi è piaciuto, grazie!
-            Join the channel GabeZazza if you liked the video, thanks!`,
-            tags: 'CAMERA CAFè,COMEDY,ENTERTAINMENT,HUMOUR,SITCOM',
+            channel: this.videoMetadata.channel,
+            description: this.videoMetadata.description,
+            tags: this.videoMetadata.tags,
             url: this.url
         };
         // Header and body params
