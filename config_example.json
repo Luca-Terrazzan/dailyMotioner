@@ -1,0 +1,20 @@
+{
+    "userInfo": {
+        "username": "",
+        "password": "",
+        "apiKey": "",
+        "apiSecret": ""
+    },
+    "folders": {
+        "logfolder": "",
+        "videosFolder": ""
+    },
+    "videosMetadata": {
+        "channel": "fun",
+        "description": "some description",
+        "tags": "tag1, tag2"
+    },
+    "options": {
+        "debug": false
+    }
+}

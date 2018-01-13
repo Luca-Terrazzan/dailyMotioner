@@ -7,6 +7,7 @@ import Config from './models/config.model';
 const logFolder = './logs/';
 const logTemplate = 'log';
 const logExtension = '.log';
+const configPath = './config.json';
 
 (async () => {
     // Check if log folder is available, otherwise creates it
@@ -14,23 +15,29 @@ const logExtension = '.log';
         fs.mkdirSync(logFolder);
     }
 
+    // Load application configuration
+    const config = Config.getInstance().loadConfig(configPath);
+    
+    const userConfig = config.getUserConfig();
+    const folderConfig = config.getFolderConfig();
+    const options = config.getOptions();
+
     // Create logger instance
     const logger = Logger.getInstance(fs.createWriteStream(
         logFolder + logTemplate + logExtension,
         { flags: 'a' } // Append
     ));
     Logger.info('Application bootstrapped!');
-    Logger.toggleDebugLogging(true);
-
-    const config = Config.getInstance('./config.json').getConfig();
-
+    Logger.info('debug mode', options.debug);
+    Logger.toggleDebugLogging(options.debug);
+    
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
-        config.username,
-        config.password,
-        config.apiKey,
-        config.apiSecret
+        userConfig.username,
+        userConfig.password,
+        userConfig.apiKey,
+        userConfig.apiSecret
     );
     await dailyMotion.login();
-    await dailyMotion.uploadVideos(config.videosFolder);
+    await dailyMotion.uploadVideos(folderConfig.videosFolder);
 })();
