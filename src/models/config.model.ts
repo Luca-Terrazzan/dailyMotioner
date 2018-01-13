@@ -21,7 +21,7 @@ export default class Config {
     };
     private options: {
         debug: boolean
-    }
+    };
 
     // Singleton
     private constructor() {}

@@ -17,7 +17,7 @@ const configPath = './config.json';
 
     // Load application configuration
     const config = Config.getInstance().loadConfig(configPath);
-    
+
     const userConfig = config.getUserConfig();
     const folderConfig = config.getFolderConfig();
     const options = config.getOptions();
@@ -30,7 +30,7 @@ const configPath = './config.json';
     Logger.info('Application bootstrapped!');
     Logger.info('debug mode', options.debug);
     Logger.toggleDebugLogging(options.debug);
-    
+
     // Create DailyMotion app
     const dailyMotion = new DailyMotion(
         userConfig.username,
