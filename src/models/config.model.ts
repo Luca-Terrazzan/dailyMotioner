@@ -37,7 +37,6 @@ export default class Config {
             throw new TypeError('Please provide a valid path to the config json!');
         }
         try {
-            Logger.debug('config path', configJsonPath);
             const config = JSON.parse(fs.readFileSync(configJsonPath, {encoding: 'UTF-8'}));
             this.userConfig = config.userInfo;
             this.folderConfig = config.folders;
