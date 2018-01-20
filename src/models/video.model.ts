@@ -22,9 +22,10 @@ export default class Video {
     private postVideoUrlEndpoint = 'me/videos/';
     private header: { Authorization: string };
     private videoMetadata: {
-        'channel': string,
-        'description': string,
-        'tags': string
+        channel: string,
+        description: string,
+        tags: string,
+        publish: string
     };
 
     /**
@@ -111,6 +112,7 @@ export default class Video {
             channel: this.videoMetadata.channel,
             description: this.videoMetadata.description,
             tags: this.videoMetadata.tags,
+            published: this.videoMetadata.publish,
             url: this.url
         };
         // Header and body params

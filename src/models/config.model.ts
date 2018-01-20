@@ -23,7 +23,8 @@ export default class Config {
     private videosConfig: {
         channel: string,
         description: string,
-        tags: string
+        tags: string,
+        publish: string
     };
     private options: {
         debug: boolean
