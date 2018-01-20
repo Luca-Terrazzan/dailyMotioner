@@ -25,7 +25,7 @@ export default class Video {
         channel: string,
         description: string,
         tags: string,
-        draft: boolean
+        draft: string
     };
 
     /**
