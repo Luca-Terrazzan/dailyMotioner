@@ -25,7 +25,7 @@ export default class Video {
         channel: string,
         description: string,
         tags: string,
-        draft: string
+        publish: string
     };
 
     /**
@@ -112,7 +112,7 @@ export default class Video {
             channel: this.videoMetadata.channel,
             description: this.videoMetadata.description,
             tags: this.videoMetadata.tags,
-            published: !this.videoMetadata.draft,
+            published: this.videoMetadata.publish,
             url: this.url
         };
         // Header and body params
