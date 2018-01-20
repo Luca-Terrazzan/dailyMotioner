@@ -24,7 +24,7 @@ export default class Config {
         channel: string,
         description: string,
         tags: string,
-        draft: boolean
+        draft: string
     };
     private options: {
         debug: boolean
